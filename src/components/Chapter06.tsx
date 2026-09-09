@@ -8,16 +8,20 @@ export default function Chapter06() {
     <section id="chapter-06" className="relative py-24 md:py-40">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <ChapterHeader
-          number="06"
-          title="The idea doesn't need a big commitment."
+          number="TEST"
+          title="This is the part worth testing."
+          subtitle="One VOD was enough to identify multiple content opportunities. The next step is simple: test the workflow on a real production cycle."
         />
 
         {/* Test proposition */}
         <ScrollReveal>
           <div className="max-w-3xl mb-16">
             <h3 className="text-xl md:text-2xl font-bold text-[#f5f5f7] mb-4">
-              Test it on one stream.
+              Test it on one VOD.
             </h3>
+            <p className="text-sm text-[#71717a] leading-relaxed">
+              No new filming required. No changes to existing workflows. Just one VOD processed through the content-intelligence layer to see what opportunities emerge.
+            </p>
           </div>
         </ScrollReveal>
 
@@ -26,22 +30,22 @@ export default function Chapter06() {
           <div className="grid md:grid-cols-3 gap-6 mb-16">
             <div className="p-6 rounded-xl border border-[#1e1f23] bg-[#111214]/40">
               <span className="text-xs uppercase tracking-wider text-[#52525b] font-medium">Input</span>
-              <div className="mt-3 text-lg font-semibold text-[#f5f5f7]">One stream</div>
-              <p className="mt-2 text-sm text-[#71717a]">Existing footage already being created.</p>
+              <div className="mt-3 text-lg font-semibold text-[#f5f5f7]">One VOD</div>
+              <p className="mt-2 text-sm text-[#71717a]">Any recent livestream or long-form upload.</p>
             </div>
             <div className="p-6 rounded-xl border border-[#6366f1]/20 bg-[#6366f1]/5">
               <span className="text-xs uppercase tracking-wider text-[#6366f1] font-medium">Output</span>
               <div className="mt-3 text-lg font-semibold text-[#f5f5f7]">Content opportunity report</div>
-              <p className="mt-2 text-sm text-[#71717a]">Structured concepts, Shorts candidates, editor roadmap.</p>
+              <p className="mt-2 text-sm text-[#71717a]">Timestamped moments, Short concepts, mid-form story, editor blueprint.</p>
             </div>
             <div className="p-6 rounded-xl border border-[#1e1f23] bg-[#111214]/40">
               <span className="text-xs uppercase tracking-wider text-[#52525b] font-medium">Measure</span>
               <div className="mt-3 text-lg font-semibold text-[#f5f5f7]">Viability</div>
               <ul className="mt-2 space-y-1 text-sm text-[#71717a]">
-                <li>• Viable concepts found</li>
-                <li>• Usable Shorts candidates</li>
-                <li>• Editorial turnaround</li>
-                <li>• Selected concepts</li>
+                <li>• Moments identified</li>
+                <li>• Short-form candidates</li>
+                <li>• Mid-form story potential</li>
+                <li>• Editorial clarity</li>
               </ul>
             </div>
           </div>
@@ -71,7 +75,7 @@ export default function Chapter06() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#f5f5f7] tracking-tight leading-[1.1]">
-              ONE STREAM.
+              ONE VOD.
             </h2>
           </motion.div>
 
@@ -83,7 +87,7 @@ export default function Chapter06() {
             className="mt-8 md:mt-12"
           >
             <p className="text-lg md:text-xl text-[#a1a1aa] leading-relaxed">
-              One stream.
+              One VOD.
               <br />
               One analysis.
               <br />
@@ -98,7 +102,7 @@ export default function Chapter06() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mt-8 text-sm text-[#71717a] max-w-lg mx-auto leading-relaxed"
           >
-            See whether the footage already being created contains more stories than are currently being extracted.
+            See whether the footage already being created contains more content opportunities than are currently being extracted.
           </motion.p>
 
           <motion.div

@@ -13,6 +13,9 @@ export function EvidenceBadge({ type, className = '' }: { type: EvidenceType; cl
     HYPOTHESIS: 'badge-hypothesis',
     PROTOTYPE: 'badge-prototype',
     SOURCE: 'badge-source',
+    TRANSCRIPT_ANALYZED: 'badge-transcript',
+    VISUAL_VERIFICATION_REQUIRED: 'badge-verification',
+    EDITORIAL_ASSESSMENT: 'badge-editorial',
   };
 
   return (

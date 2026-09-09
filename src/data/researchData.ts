@@ -1,4 +1,4 @@
-export type EvidenceType = 'FACT' | 'DERIVED' | 'INTERPRETATION' | 'HYPOTHESIS' | 'PROTOTYPE' | 'SOURCE';
+export type EvidenceType = 'FACT' | 'DERIVED' | 'INTERPRETATION' | 'HYPOTHESIS' | 'PROTOTYPE' | 'SOURCE' | 'TRANSCRIPT_ANALYZED' | 'VISUAL_VERIFICATION_REQUIRED' | 'EDITORIAL_ASSESSMENT';
 
 export const evidenceLabels: Record<EvidenceType, string> = {
   FACT: 'Verified public metric',
@@ -7,6 +7,9 @@ export const evidenceLabels: Record<EvidenceType, string> = {
   HYPOTHESIS: 'Proposed explanation',
   PROTOTYPE: 'Illustrative — not yet verified',
   SOURCE: 'Public source',
+  TRANSCRIPT_ANALYZED: 'Verified via transcript analysis',
+  VISUAL_VERIFICATION_REQUIRED: 'Requires visual verification',
+  EDITORIAL_ASSESSMENT: 'Editorial assessment',
 };
 
 export const researchData = {

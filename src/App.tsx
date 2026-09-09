@@ -3,7 +3,7 @@ import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import Hero from './components/Hero';
 import Chapter01, { Chapter02, Chapter03 } from './components/Chapters01-03';
 import Chapter04 from './components/Chapter04';
-import Chapter05 from './components/Chapter05';
+import VODCaseStudy from './components/VODCaseStudy';
 import Chapter06 from './components/Chapter06';
 import ResearchLibrary from './components/ResearchLibrary';
 import { Menu, X, BookOpen } from 'lucide-react';
@@ -13,7 +13,7 @@ const navItems = [
   { id: 'chapter-02', label: 'Pattern' },
   { id: 'chapter-03', label: 'Shift' },
   { id: 'chapter-04', label: 'System' },
-  { id: 'chapter-05', label: 'Demo' },
+  { id: 'chapter-vod', label: 'Case Study' },
   { id: 'chapter-06', label: 'Test' },
 ];
 
@@ -106,7 +106,7 @@ function App() {
                     activeSection === item.id
                       ? 'text-[#f5f5f7] bg-[#1e1f23]'
                       : 'text-[#71717a] hover:text-[#a1a1aa]'
-                  } ${item.id === 'chapter-04' || item.id === 'chapter-05' ? 'text-[#818cf8] hover:text-[#a78bfa]' : ''}`}
+                  } ${item.id === 'chapter-04' || item.id === 'chapter-vod' ? 'text-[#818cf8] hover:text-[#a78bfa]' : ''}`}
                 >
                   {item.label}
                 </button>
@@ -184,7 +184,7 @@ function App() {
         <Chapter04 />
         
         <div className="chapter-divider" />
-        <Chapter05 />
+        <VODCaseStudy />
         
         <div className="chapter-divider" />
         <Chapter06 />
