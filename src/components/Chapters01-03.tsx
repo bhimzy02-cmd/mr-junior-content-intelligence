@@ -191,13 +191,21 @@ export function Chapter02() {
             <motion.button
               key={item.id}
               onClick={() => setActiveDNA(activeDNA === item.id ? null : item.id)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setActiveDNA(activeDNA === item.id ? null : item.id);
+                }
+              }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className={`p-4 md:p-5 rounded-xl border text-left transition-all ${
+              className={`p-4 md:p-5 rounded-xl border text-left transition-all focus:outline-none focus:ring-2 focus:ring-[#6366f1] focus:ring-offset-2 focus:ring-offset-[#08090a] ${
                 activeDNA === item.id
                   ? 'border-[#6366f1]/50 bg-[#6366f1]/5'
                   : 'border-[#1e1f23] bg-[#111214]/40 hover:border-[#2a2b30]'
               }`}
+              aria-expanded={activeDNA === item.id}
+              aria-label={`${item.title}: ${item.description}`}
             >
               <span className={`text-sm font-semibold ${activeDNA === item.id ? 'text-[#818cf8]' : 'text-[#f5f5f7]'}`}>
                 {item.title}

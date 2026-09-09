@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { ChapterHeader, ScrollReveal } from './ui';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Mail, Youtube } from 'lucide-react';
+import { researchData } from '../data/researchData';
 
 export default function Chapter06() {
   return (
@@ -108,19 +109,33 @@ export default function Chapter06() {
             className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <a
-              href="#chapter-05"
+              href={`mailto:${researchData.contact.email}?subject=Stream%20Content%20Intelligence%20Test`}
               className="inline-flex items-center gap-2 px-6 py-3 bg-[#6366f1] hover:bg-[#5558e6] text-white text-sm font-medium rounded-lg transition-colors"
             >
+              <Mail size={14} />
               Let's test one
-              <ArrowRight size={14} />
             </a>
             <a
-              href="#research-library"
+              href={researchData.contact.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 border border-[#2a2b30] hover:border-[#3a3b42] text-[#a1a1aa] hover:text-[#f5f5f7] text-sm font-medium rounded-lg transition-colors"
             >
+              <Youtube size={14} />
               Explore the research
             </a>
           </motion.div>
+
+          {/* Contact note */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="mt-8 text-xs text-[#52525b] text-center"
+          >
+            {researchData.contact.note}
+          </motion.p>
         </div>
       </div>
     </section>

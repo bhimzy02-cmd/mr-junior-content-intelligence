@@ -16,7 +16,7 @@ export const researchData = {
     subscribers: 811000,
     lifetimeViews: 117100000,
     totalVideos: 1650,
-    recentCadence: 4.3,
+    recentCadence: 4.2, // 3.80 long-form + 0.40 Shorts per week
     snapshotNote: 'Public-data snapshot. Not YouTube Studio data.',
   },
 
@@ -264,10 +264,10 @@ export const researchData = {
 
   streamDemo: {
     status: 'prototype' as EvidenceType,
-    sourceTitle: 'RAFT — recent multiplayer stream',
+    sourceTitle: 'Rafting Besauni, Hey Rafting Besauni | Gaming Late Night',
     game: 'RAFT',
-    duration: '~5h',
-    date: 'Recent',
+    duration: '6h14m',
+    date: '31 Aug',
     moments: [
       {
         id: 'm1',
@@ -396,6 +396,12 @@ export const researchData = {
     { name: 'vidIQ Channel Snapshot', url: 'https://www.vidiq.com' },
     { name: 'Social Blade Channel Snapshot', url: 'https://socialblade.com' },
   ],
+
+  contact: {
+    email: 'hello@example.com', // Replace with actual contact email
+    youtube: 'https://www.youtube.com/@mrjuniorofficial',
+    note: 'Reach out to discuss the one-stream test.',
+  },
 };
 
 export function formatNumber(num: number): string {

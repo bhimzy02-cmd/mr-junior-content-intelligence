@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import Hero from './components/Hero';
 import Chapter01, { Chapter02, Chapter03 } from './components/Chapters01-03';
 import Chapter04 from './components/Chapter04';
@@ -22,27 +22,41 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [libraryOpen, setLibraryOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const sectionRefs = useRef<Map<string, HTMLElement>>(new Map());
 
+  // Scroll progress indicator
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+
+  // IntersectionObserver for scroll-spy
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 100);
+    const observers: IntersectionObserver[] = [];
 
-      const sections = navItems.map(item => ({
-        id: item.id,
-        el: document.getElementById(item.id),
-      }));
-      const scrollPos = window.scrollY + 200;
-      
-      let current = '';
-      for (let i = sections.length - 1; i >= 0; i--) {
-        if (sections[i].el && sections[i].el!.offsetTop <= scrollPos) {
-          current = sections[i].id;
-          break;
-        }
-      }
-      setActiveSection(current);
-    };
+    navItems.forEach(item => {
+      const el = document.getElementById(item.id);
+      if (!el) return;
+      sectionRefs.current.set(item.id, el);
 
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              setActiveSection(item.id);
+            }
+          });
+        },
+        { rootMargin: '-40% 0px -40% 0px', threshold: 0 }
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach(o => o.disconnect());
+  }, []);
+
+  // Simple scroll detection for nav background
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 100);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -64,6 +78,12 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#08090a] text-[#f5f5f7]">
+      {/* Scroll progress indicator */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-[2px] bg-[#6366f1] origin-left z-50"
+        style={{ scaleX }}
+      />
+
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'glass' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 md:px-8">

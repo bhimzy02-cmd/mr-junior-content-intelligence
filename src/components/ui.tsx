@@ -156,7 +156,15 @@ export function ExpandablePanel({ title, children, badge, defaultOpen = false }:
     <div className="border border-[#1e1f23] rounded-lg overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-4 md:p-5 text-left hover:bg-[#111214] transition-colors"
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setIsOpen(!isOpen);
+          }
+        }}
+        className="w-full flex items-center justify-between p-4 md:p-5 text-left hover:bg-[#111214] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6366f1] focus:ring-inset"
+        aria-expanded={isOpen}
+        aria-controls={`panel-${title.replace(/\s+/g, '-').toLowerCase()}`}
       >
         <div className="flex items-center gap-3">
           <span className="text-sm md:text-base font-medium text-[#f5f5f7]">{title}</span>
@@ -165,15 +173,19 @@ export function ExpandablePanel({ title, children, badge, defaultOpen = false }:
         <motion.span
           animate={{ rotate: isOpen ? 90 : 0 }}
           className="text-[#52525b]"
+          aria-hidden="true"
         >
           ›
         </motion.span>
       </button>
       <motion.div
+        id={`panel-${title.replace(/\s+/g, '-').toLowerCase()}`}
         initial={false}
         animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
         transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
         className="overflow-hidden"
+        role="region"
+        aria-labelledby={`heading-${title.replace(/\s+/g, '-').toLowerCase()}`}
       >
         <div className="p-4 md:p-5 pt-0 border-t border-[#1e1f23]">
           <div className="pt-4">{children}</div>

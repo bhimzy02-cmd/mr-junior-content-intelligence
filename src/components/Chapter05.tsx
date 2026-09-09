@@ -31,7 +31,7 @@ export default function Chapter05() {
         <ChapterHeader
           number="05"
           title="Let's test the idea."
-          subtitle="Using one real recent public Mr Junior stream as the demonstration source."
+          subtitle="Modeled on a real recent stream from the RAFT sample — moments and concepts are illustrative."
         />
 
         {/* Demo mode indicator */}
@@ -90,9 +90,15 @@ export default function Chapter05() {
                 <motion.button
                   key={moment.id}
                   onClick={() => setSelectedMoment(selectedMoment === moment.id ? null : moment.id)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setSelectedMoment(selectedMoment === moment.id ? null : moment.id);
+                    }
+                  }}
                   whileHover={{ scale: 1.4 }}
                   whileTap={{ scale: 0.9 }}
-                  className="stream-moment-node"
+                  className="stream-moment-node focus:outline-none focus:ring-2 focus:ring-[#6366f1] focus:ring-offset-2 focus:ring-offset-[#08090a]"
                   style={{
                     left: `${moment.position}%`,
                     borderColor: momentColors[moment.type] || '#6366f1',
@@ -101,6 +107,7 @@ export default function Chapter05() {
                   }}
                   title={moment.title}
                   aria-label={`Moment: ${moment.title} at ${moment.timestamp}`}
+                  aria-expanded={selectedMoment === moment.id}
                 />
               ))}
 
@@ -181,12 +188,20 @@ export default function Chapter05() {
             <motion.button
               key={story.id}
               onClick={() => setSelectedStory(selectedStory === story.id ? null : story.id)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSelectedStory(selectedStory === story.id ? null : story.id);
+                }
+              }}
               whileHover={{ y: -2 }}
-              className={`p-5 rounded-xl border text-left transition-all ${
+              className={`p-5 rounded-xl border text-left transition-all focus:outline-none focus:ring-2 focus:ring-[#6366f1] focus:ring-offset-2 focus:ring-offset-[#08090a] ${
                 selectedStory === story.id
                   ? 'border-[#6366f1]/50 bg-[#6366f1]/5'
                   : 'border-[#1e1f23] bg-[#111214]/40 hover:border-[#2a2b30]'
               }`}
+              aria-expanded={selectedStory === story.id}
+              aria-label={`Story candidate: ${story.title}`}
             >
               <div className="flex items-center gap-2 mb-3">
                 <Sparkles size={14} className="text-[#6366f1]" />

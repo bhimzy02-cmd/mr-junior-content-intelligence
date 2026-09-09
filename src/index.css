@@ -251,8 +251,27 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
+  
+  /* Disable Framer Motion animations */
+  [data-framer-motion] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
   html { scroll-behavior: auto; }
+}
+
+/* Improve contrast for muted text */
+.text-muted {
+  color: #71717a; /* Slightly lighter than #52525b for better contrast */
+}
+
+/* Ensure minimum contrast for small text */
+.text-xs.text-\[\#52525b\],
+.text-\[11px\].text-\[\#52525b\] {
+  color: #636670; /* Improved contrast for small muted text */
 }
 
 /* Focus styles */

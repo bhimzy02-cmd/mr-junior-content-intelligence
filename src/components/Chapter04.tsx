@@ -46,19 +46,21 @@ export default function Chapter04() {
               const isActive = i === activeStage;
               const isPast = i < activeStage;
               return (
-                <motion.div
+                <motion.button
                   key={stage.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className={`relative flex flex-col items-center text-center p-4 md:p-5 rounded-xl border transition-all duration-500 ${
+                  onClick={() => setActiveStage(i)}
+                  className={`relative flex flex-col items-center text-center p-4 md:p-5 rounded-xl border transition-all duration-500 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#6366f1] focus:ring-offset-2 focus:ring-offset-[#08090a] ${
                     isActive
                       ? 'border-[#6366f1]/50 bg-[#6366f1]/10 shadow-[0_0_20px_rgba(99,102,241,0.1)]'
                       : isPast
-                      ? 'border-[#2a2b30] bg-[#111214]/60'
-                      : 'border-[#1e1f23] bg-[#111214]/30'
+                      ? 'border-[#2a2b30] bg-[#111214]/60 hover:border-[#3a3b42]'
+                      : 'border-[#1e1f23] bg-[#111214]/30 hover:border-[#2a2b30]'
                   }`}
+                  aria-label={`Pipeline stage ${i + 1}: ${stage.label}`}
                 >
                   {/* Stage number */}
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold mb-3 transition-colors ${
@@ -88,7 +90,7 @@ export default function Chapter04() {
                       →
                     </div>
                   )}
-                </motion.div>
+                </motion.button>
               );
             })}
           </div>
